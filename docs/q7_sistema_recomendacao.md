@@ -25,15 +25,7 @@ Desenvolvimento de um motor de recomendação item-item (*Item-Based Collaborati
 
 ---
 
-## 🛠️ Comandos de Execução
-Para reproduzir a matriz e o ranking no ambiente local:
-
-```powershell
-python queries/rodar_q7.py
-
----
-
-## 🔍 Validação da Questão 7.2 
+## 🔍 Validação da Questão 7.2 — Item Mais Similar
 
 ### 🏆 Resultado
 O produto com **MAIOR similaridade de cosseno** ao item de referência **"Motor de Popa 1949"** (Product ID: `180`) é o **"Motor de Popa 5331"** (Product ID: `389`), apresentando um índice de similaridade de **`0.256553`** (~25,66%).
