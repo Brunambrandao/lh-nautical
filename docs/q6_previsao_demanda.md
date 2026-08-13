@@ -2,11 +2,13 @@
 
 ## 📊 Resultados do Período de Teste (1º Trimestre / 2026)
 
-| Mês / Ano | Vendas Reais (`quantidade_real`) | Previsão Baseline (`previsao_baseline`) | Erro Absoluto (`|Real - Prev|`) |
+| Mês / Ano | Vendas Reais (`quantidade_real`) | Previsão Baseline (`previsao_baseline`) | Erro Absoluto |
 | :---: | :---: | :---: | :---: |
 | **2026-01** | **152.0** | **80.33** | **71.67** |
 | **2026-02** | **98.0** | **110.67** | **12.67** |
 | **2026-03** | **105.0** | **101.67** | **3.33** |
+
+---
 
 ### 📈 Métrica Consolidada
 * **MAE (Mean Absolute Error):** `29.22` unidades
