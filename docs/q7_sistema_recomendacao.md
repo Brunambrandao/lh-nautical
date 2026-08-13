@@ -67,3 +67,18 @@ product_id       product_name  similaridade_cosseno
        337   Cabo Náutico 9048              0.239332
         55    GPS Plotter 6249              0.237744
 ================================================================================
+```
+---
+
+## 🧠 Questão 7.3 — Explicação Técnica do Modelo
+
+### 1. Construção da Matriz Usuário-Item
+Matriz binária $M \in \mathbb{R}^{U \times P}$ (onde $U$ é o número de clientes e $P$ é o número de produtos), em que:
+
+$$M_{u,p} = \begin{cases} 1, & \text{se o cliente } u \text{ comprou o produto } p \\ 0, & \text{caso contrário} \end{cases}$$
+
+### 2. Significado da Similaridade de Cosseno
+Mede a interseção proporcional da base de compradores de dois produtos. Dois itens apresentam alta similaridade quando uma fração significativa dos clientes que compram o item A também adquire o item B, independentemente da popularidade absoluta de cada um.
+
+### 3. Limitação do Método (*Cold Start Problem*)
+Incapacidade de gerar recomendações para novos produtos recém-cadastrados sem histórico prévio de vendas (vetores nulos), além da tendência a favorecer itens populares (*Popularity Bias*).
