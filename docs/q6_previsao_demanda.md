@@ -1,17 +1,28 @@
-# Questão 6 — Resultados e Avaliação do Modelo Baseline
+# Questão 6 — Previsão de Demanda (Bússola de Bordo 702)
+
+## 📌 Contexto e Objetivo
+Desenvolvimento de modelo preditivo *baseline* (Média Móvel de 3 meses) para projetar as vendas mensais do produto **"Bússola de Bordo 702"** no 1º Trimestre de 2026.
+
+---
 
 ## 📊 Resultados do Período de Teste (1º Trimestre / 2026)
 
 | Mês / Ano | Vendas Reais (`quantidade_real`) | Previsão Baseline (`previsao_baseline`) | Erro Absoluto |
 | :---: | :---: | :---: | :---: |
-| **2026-01** | **152.0** | **80.33** | **71.67** |
-| **2026-02** | **98.0** | **110.67** | **12.67** |
-| **2026-03** | **105.0** | **101.67** | **3.33** |
+| **2026-01** | **152.0** | **80.333333** | **71.666667** |
+| **2026-02** | **98.0** | **110.666667** | **12.666667** |
+| **2026-03** | **105.0** | **101.666667** | **3.333333** |
 
 ---
 
-### 📈 Métrica Consolidada
-* **MAE (Mean Absolute Error):** `29.22` unidades
+## 🎯 Validação de Resultados
+
+### Questão 6.1 — Erro Médio Absoluto (MAE)
+* **MAE:** `29.22` unidades
+
+### Questão 6.2 — Soma Total da Previsão de Vendas (Q1 / 2026)
+* **Soma Exata das Previsões:** `80.333333 + 110.666667 + 101.666667 = 292.666667`
+* **Valor Arredondado (Resposta da Validação):** **`293`** unidades
 
 ---
 
