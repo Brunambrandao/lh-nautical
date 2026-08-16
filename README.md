@@ -38,6 +38,7 @@ lh-nautical/
 ├── queries/                     # Consultas SQL e scripts de execução por questão
 │   ├── q1_eda_orders.sql
 │   ├── q4_analise_clientes.sql
+|   ├── q5_calendario_dias_semana.sql
 │   ├── rodar_q1.py ... rodar_q7.py
 │   └── scripts/                 # Scripts de infraestrutura (schema e carga)
 │       ├── generate_schema.py
