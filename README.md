@@ -19,14 +19,14 @@ O desafio simula uma situação real: os dados da empresa chegam desorganizados 
 | 5 | Dimensão de calendário e vendas médias por dia da semana | Consulta SQL com geração de série de datas | SQL |
 | 6 | Previsão de demanda (média móvel de 3 meses) | Script com validação de MAE | Python + pandas |
 | 7 | Sistema de recomendação por similaridade de cosseno | Script com matriz usuário × produto | Python + pandas + scikit-learn |
-| 8 | Dashboard de vendas e performance | Painel interativo | Power BI |
+| 8 | Dashboard de vendas e performance | Painel interativo (5 páginas) | Power BI |
 
 ## Estrutura do repositório
 
 ```
-lh-nautico/
+lh-nautical/
 ├── dashboards/                  # Arquivos de Business Intelligence e imagens
-│   ├── images/                  # Capturas de tela dos dashboards desenvolvidos
+│   ├── images/                  # Capturas de tela do dashboard (5 páginas)
 │   └── dashboard_lh_nautical.pbix
 ├── docs/                        # Documentação detalhada e diagnósticos por questão
 │   ├── q1_diagnostico.md
@@ -35,9 +35,18 @@ lh-nautico/
 │   ├── q6_previsao_demanda.md
 │   └── q7_sistema_recomendacao.md
 ├── lh_nautical_csv/             # Base de dados em formato CSV (24 tabelas brutas)
-├── queries/                     # Scripts de automação Python e consultas SQL (.sql)
+├── queries/                     # Consultas SQL e scripts de execução por questão
+│   ├── q1_eda_orders.sql
+│   ├── q4_analise_clientes.sql
+│   ├── rodar_q1.py ... rodar_q7.py
+│   └── scripts/                 # Scripts de infraestrutura (schema e carga)
+│       ├── generate_schema.py
+│       ├── load_data.py
+│       └── test_load.py
 ├── .gitignore                   # Arquivos ignorados pelo Git
+├── LICENSE                      # Licença MIT
 ├── lh_nautical_bruto.db         # Banco de dados SQLite (dados brutos, para testes)
+├── schema.sql                   # DDL gerado a partir dos CSVs
 └── README.md                    # Documentação principal do projeto
 ```
 
@@ -49,15 +58,15 @@ lh-nautico/
    ```
 2. Para gerar o schema a partir dos CSVs:
    ```bash
-   python queries/generate_schema.py
+   python queries/scripts/generate_schema.py
    ```
 3. Para carregar os dados brutos (SQLite local, usado para validação rápida):
    ```bash
-   python queries/test_load.py
+   python queries/scripts/test_load.py
    ```
 4. Para carregar em um PostgreSQL (defina as variáveis de ambiente `DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_PORT`, `DB_NAME`):
    ```bash
-   python queries/load_data.py
+   python queries/scripts/load_data.py
    ```
 5. Para rodar as análises de cada questão:
    ```bash
@@ -67,8 +76,6 @@ lh-nautico/
    python queries/rodar_q6.py
    python queries/rodar_q7.py
    ```
-
-> ⚠️ Ajuste os caminhos acima caso os scripts estejam organizados de forma diferente dentro de `queries/` no seu repositório.
 
 ## Principais decisões técnicas
 
@@ -80,16 +87,20 @@ lh-nautico/
 
 ## Dashboard
 
-O painel de Vendas e Performance foi construído em Power BI e traz:
-- Indicadores gerais (faturamento total, total de pedidos, ticket médio, total de clientes)
-- Evolução de faturamento por mês/ano
-- Ranking dos produtos mais vendidos
-- Análise dos clientes fiéis (Questão 4)
-- Vendas médias por dia da semana com dimensão de calendário (Questão 5)
+O painel de Vendas e Performance foi construído em Power BI e está **finalizado**, com 5 páginas:
+
+1. **Capa** — identificação do projeto e autoria.
+2. **Visão Geral / Vendas** — indicadores gerais (total de pedidos, faturamento, ticket médio, total de clientes), evolução de faturamento por mês/ano, top 10 produtos mais vendidos e vendas médias por dia da semana (Questão 5).
+3. **Clientes** — ranking dos 10 clientes fiéis (Questão 4), categoria com mais itens comprados pelo grupo elite e distribuição de diversidade de categorias por cliente.
+4. **Previsão de Demanda** — vendas reais vs. previsão baseline (MM3) para "Bússola de Bordo 702", MAE do modelo e discussão da limitação de sazonalidade (Questão 6).
+5. **Recomendação de Produtos** — lógica do modelo de similaridade de cosseno e top 5 produtos similares ao "Motor de Popa 1949" (Questão 7).
 
 O arquivo do dashboard está em `dashboards/dashboard_lh_nautical.pbix`, com capturas de tela em `dashboards/images/`.
 
-*(Em desenvolvimento — atualize esta seção com os prints finais assim que o painel estiver concluído.)*
+
+## Licença
+
+Este projeto está licenciado sob os termos da licença **MIT** — veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ## Autor
 
