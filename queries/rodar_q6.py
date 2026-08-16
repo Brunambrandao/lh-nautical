@@ -2,6 +2,7 @@
 Script de Execução - Questão 6: Previsão de Demanda (Bússola de Bordo 702)
 Modelo Baseline: Média Móvel dos Últimos 3 Meses
 Validação Q6.2: Soma Total das Previsões no 1º Trimestre de 2026
+
 """
 
 import pandas as pd
@@ -14,6 +15,7 @@ def executar_q6():
   conn = sqlite3.connect(DB_FILE)
 
   # 1. Agrupamento mensal de vendas da 'Bússola de Bordo 702'
+  # CORRIGIDO: comparação exata em vez de LIKE com curinga nos dois lados
   sql_vendas = """
     SELECT 
         STRFTIME('%Y-%m', o.created_at) AS mes_ano,
@@ -22,8 +24,7 @@ def executar_q6():
     JOIN orders o ON oi.order_id = o.id
     JOIN product_variants pv ON oi.product_variant_id = pv.id
     JOIN products p ON pv.product_id = p.id
-    WHERE LOWER(p.name) LIKE '%bússola de bordo 702%'
-       OR LOWER(p.name) LIKE '%bussola de bordo 702%'
+    WHERE p.name = 'Bússola de Bordo 702'
     GROUP BY STRFTIME('%Y-%m', o.created_at)
     ORDER BY mes_ano ASC;
     """
@@ -51,7 +52,7 @@ def executar_q6():
   soma_arredondada = round(soma_previsoes)
 
   print("=" * 70)
-  print(" DESEMPENHO NO 1º TRIMESTRE DE 2026 (PERÍODO DE TESTE)")
+  print(" DESEMPENHO NO 1º TRIMESTRE DE 2026 (PERÍODO DE TESTE) - CORRIGIDO")
   print("=" * 70)
   print(df_teste.to_string(index=False))
 
